@@ -1,0 +1,5 @@
+CREATE DATABASE game_backlog WITH
+    ENCODING 'UTF8';
+
+CREATE USER game_backlog_tracker WITH
+    PASSWORD '<VERY_SECRET_DB_PASSWORD>';
