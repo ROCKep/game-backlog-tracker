@@ -26,7 +26,7 @@ public class BacklogServiceImpl implements BacklogService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<GameDto> listGamesInBacklog() {
+    public List<GameDto> listGamesInBacklogOfCurrentUser() {
         User user = userService.getAuthenticatedUser();
         List<BacklogItem> games = backlogRepository.findByUserId(user.getId());
         return games.stream()
@@ -37,7 +37,7 @@ public class BacklogServiceImpl implements BacklogService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<GameDto> searchGamesInBacklog(@NonNull String search) {
+    public List<GameDto> searchGamesInBacklogOfCurrentUser(@NonNull String search) {
         User user = userService.getAuthenticatedUser();
         List<BacklogItem> games = backlogRepository.findByUserIdAndGameNameContaining(user.getId(), search);
         return games.stream()
@@ -48,7 +48,7 @@ public class BacklogServiceImpl implements BacklogService {
 
     @Override
     @Transactional
-    public void addGameToBacklog(long gameId) {
+    public void addGameToBacklogOfCurrentUser(long gameId) {
         User user = userService.getAuthenticatedUser();
         Game game = gameRepository.findById(gameId).orElseThrow(() ->
                 new NotFoundException("Игра с id %s не найдена", gameId));
@@ -60,7 +60,7 @@ public class BacklogServiceImpl implements BacklogService {
 
     @Override
     @Transactional
-    public void deleteGameFromBacklog(long gameId) {
+    public void deleteGameFromBacklogOfCurrentUser(long gameId) {
         User user = userService.getAuthenticatedUser();
         if (!gameRepository.existsById(gameId)) {
             throw new NotFoundException("Игра с id %s не найдена", gameId);

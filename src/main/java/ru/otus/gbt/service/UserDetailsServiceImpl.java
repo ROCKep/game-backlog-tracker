@@ -6,7 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.gbt.domain.User;
 import ru.otus.gbt.repository.UserRepository;
@@ -14,7 +14,7 @@ import ru.otus.gbt.repository.UserRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Service
 @Primary
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {

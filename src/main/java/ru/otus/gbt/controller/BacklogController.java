@@ -14,22 +14,22 @@ public class BacklogController {
     private final BacklogService backlogService;
 
     @GetMapping("/api/backlog/search")
-    public List<GameDto> searchGamesInBacklog(@RequestParam String search) {
-        return backlogService.searchGamesInBacklog(search);
+    public List<GameDto> searchGamesInBacklogOfCurrentUser(@RequestParam String search) {
+        return backlogService.searchGamesInBacklogOfCurrentUser(search);
     }
 
     @GetMapping("/api/backlog")
-    public List<GameDto> listGamesInBacklog() {
-        return backlogService.listGamesInBacklog();
+    public List<GameDto> listGamesInBacklogOfCurrentUser() {
+        return backlogService.listGamesInBacklogOfCurrentUser();
     }
 
     @PostMapping("/api/backlog")
-    public void addGameToBacklog(@RequestBody long gameId) {
-        backlogService.addGameToBacklog(gameId);
+    public void addGameToBacklogOfCurrentUser(@RequestBody long gameId) {
+        backlogService.addGameToBacklogOfCurrentUser(gameId);
     }
 
     @DeleteMapping("/api/backlog/{gameId}")
-    public void deleteGameFromBacklog(@PathVariable long gameId) {
-        backlogService.deleteGameFromBacklog(gameId);
+    public void deleteGameFromBacklogOfCurrentUser(@PathVariable long gameId) {
+        backlogService.deleteGameFromBacklogOfCurrentUser(gameId);
     }
 }
