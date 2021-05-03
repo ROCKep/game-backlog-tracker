@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/game_backlog
+    username: game_backlog_tracker
+    password: game_backlog_tracker
+    initialization-mode: never
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none

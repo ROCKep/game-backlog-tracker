@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    privileged: true
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_URL=jdbc:postgresql://<DB_HOST>:<DB_PORT>/game_backlog
+      - DB_USERNAME=game_backlog_tracker
+      - DB_PASSWORD=<VERY_SECRET_DB_PASSWORD>
+    networks:
+      - nw
+networks:
+  nw:
